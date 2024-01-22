@@ -2,12 +2,8 @@
 def safe_print_division(a, b):
 	try:
 		result = a / b
-	except ZeroDivisionError:
+	except (ZeroDivisionError):
 		result = None
-		print("Division by zero is not allowed.")
-	except Exception as e:
-		result = None
-		print(f"An error occurred: {e}")
 	finally:
 		print("Inside result: {}".format(result))
 		return result
