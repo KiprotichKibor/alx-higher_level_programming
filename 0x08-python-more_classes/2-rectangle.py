@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 """A class that defines a rectagle"""
+
+
 class Rectangle:
     """
     A class representing a rectangle

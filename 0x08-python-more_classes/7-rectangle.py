@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 """Defines a class Rectangle."""
+
+
 class Rectangle:
     """
     A class representing a rectangle.
@@ -103,10 +105,10 @@ class Rectangle:
         return "\n".join([str(self.print_symbol) * self.__width] * self.__height)
 
     def __repr__(self):
-        """Return a string representation of the rectangle to recreate a new instance."""
+        """Return a string representation to recreate a new instance."""
         return f"Rectangle({self.__width}, {self.__height})"
 
     def __del__(self):
-        """Destructor method that prints a message when an instance is deleted."""
+        """prints a message when an instance is deleted."""
         print("Bye rectangle...")
         Rectangle.number_of_instances -= 1

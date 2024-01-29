@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 """Defines a class Rectangle."""
+
+
 class Rectangle:
     """
     A class representing a rectangle.
@@ -17,7 +19,7 @@ class Rectangle:
         area: Calculate and return the area of the rectangle.
         perimeter: Calculate and return the perimeter of the rectangle.
         __str__: Return a string representation of the rectangle.
-        __repr__: Return a string representation of the rectangle for debugging.
+        __repr__: Return a string representation for debugging.
     """
 
     def __init__(self, width=0, height=0):

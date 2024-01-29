@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 """Defines a class Rectangle."""
+
+
 class Rectangle:
     """
     A class representing a rectangle.
@@ -17,8 +19,8 @@ class Rectangle:
         area: Calculate and return the area of the rectangle.
         perimeter: Calculate and return the perimeter of the rectangle.
         __str__: Return a string representation of the rectangle.
-        __repr__: Return a string representation of the rectangle to recreate a new instance.
-        __del__: Destructor method that prints a message when an instance is deleted.
+        __repr__: Return a string representation to recreate a new instance.
+        __del__: prints a message when an instance is deleted.
     """
 
     def __init__(self, width=0, height=0):
@@ -99,9 +101,9 @@ class Rectangle:
         return "\n".join(["#" * self.__width] * self.__height)
 
     def __repr__(self):
-        """Return a string representation of the rectangle to recreate a new instance."""
+        """Return a string representation to recreate a new instance."""
         return f"Rectangle({self.__width}, {self.__height})"
 
     def __del__(self):
-        """Destructor method that prints a message when an instance is deleted."""
+        """prints a message when an instance is deleted."""
         print("Bye rectangle...")
