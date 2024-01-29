@@ -5,5 +5,3 @@ class Rectangle:
     An empty class with no objects
     """
     pass
-if __name__ == '__main__':
-    Rectangle.main()
