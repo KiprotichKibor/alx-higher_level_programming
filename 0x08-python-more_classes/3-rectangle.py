@@ -16,8 +16,8 @@ class Rectangle:
         height.setter: Setter method for setting the height of the rectangle.
         area: Calculate and return the area of the rectangle.
         perimeter: Calculate and return the perimeter of the rectangle.
-	__str__: Return a string representation of the rectangle.
-	__repr__: Return a string representation of the rectangle for the debugging.
+        __str__: Return a string representation of the rectangle.
+        __repr__: Return a string representation of the rectangle for debugging.
     """
 
     def __init__(self, width=0, height=0):
@@ -94,10 +94,9 @@ class Rectangle:
     def __str__(self):
         """Return a string representation of the rectangle."""
         if self.__width == 0 or self.__height == 0:
-	    return ""
-        else:
-	    return "\n".join(["#" * self.__width] * self.__height)
+            return ""
+        return "\n".join(["#" * self.__width] * self.__height)
 
     def __repr__(self):
         """Return a string representation of the rectangle for debugging."""
-	return f"Rectangle({self.__width}, {self.__height})"
+        return f"Rectangle({self.__width}, {self.__height})"
