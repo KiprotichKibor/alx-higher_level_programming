@@ -1,0 +1,17 @@
+import unittest
+
+say_my_name = __import__('3-say_my_name').say_my_name
+
+class TestSayMyNameFunction(unittest.TestCase):
+	def test_say_my_name_with_valid_names(self):
+		self.assertEqual(say_my_name("John", "Smith"), "My name is John Smith")
+		self.assertEqual(say_my_name("Walter", "White"), "My name is Walter White")
+		self.assertEqual(say_my_name("Bob"), "My name is Bob")
+
+	def test_say_my_name_with_invalid_names(self):
+		with self.assertRaises(TypeError) as context:
+			say_my_name(12, "White")
+		self.assertEqual(str(context.exception), "first_name must be a string or last_name must be a string")
+
+if __name__ == '__main__':
+	unittest.main()

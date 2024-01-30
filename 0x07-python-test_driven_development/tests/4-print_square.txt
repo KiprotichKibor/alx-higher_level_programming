@@ -1,0 +1,39 @@
+import unittest
+
+print_square = __import__('4-print_square').print_square
+
+class TestPrintSquareFunction(unittest.TestCase):
+	def test_print_square_with_valid_size(self):
+		import sys
+		from io import StringIO
+		original_stdout = sys.stdout
+		sys.stdout = StringIO()
+
+		print_square(4)
+		self.assertEqual(sys.stdout.getvalue(), "####\n####\n####\n####\n")
+		
+		sys.stdout = StringIO()
+		print_square(10)
+		self.assertEqual(sys.stdout.getvalue(), "##########\n##########\n##########\n##########\n##########\n##########\n##########\n##########\n##########\n##########\n")
+		
+		sys.stdout = StringIO()
+		print_square(0)
+		self.assertEqual(sys.stdout.getvalue(), "")
+
+		sys.stdout = StringIO()
+		print_square(1)
+		self.assertEqual(sys.stdout.getvalue(), "#\n")
+
+		sys.stdout = original_stdout
+
+	def test_print_square_with_invalid_size(self):
+		with self.assertRaises(TypeError) as context:
+			print_square(1.5)
+		self.assertEqual(str(context.exception), "size must be an integer")
+
+		with self.assertRaises(ValueError) as context:
+			print_square(-1)
+		self.assertEqual(str(context.exception), "size must be >= 0")
+
+if __name__ == '__main__':
+	unittest.main()

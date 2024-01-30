@@ -1,0 +1,23 @@
+import unittest
+
+""" Import the add_integer function from the main file """
+add_integer = __import__('0-add_integer').add_integer
+
+class TestAddIntegerFunction(unittest.TestCase):
+	def test_add_integer_with_integers(self):
+		self.assertEqual(add_integer(1, 2), 3)
+		self.assertEqual(add_integer(100, -2), 98)
+
+	def test_add_integer_with_one_argument(self):
+		self.assertEqual(add_integer(2), 100)
+
+	def test_add_integer_with_floats(self):
+		sel.assertEqual(add_integer(100.3, -2), 98)
+
+	def test_add_integer_with_non_integer_or_float(self):
+	with self.assertRaises(TypeError) as context:
+		add_integer(4, "School")
+	self.assertEqual(str(context.exception), "a must be an integer")
+
+if __name__ == '__main__':
+	unittest.main()
