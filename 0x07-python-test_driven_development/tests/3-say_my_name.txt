@@ -1,17 +1,56 @@
-import unittest
+The "3-say_my_name" module
+=========================
 
-say_my_name = __import__('3-say_my_name').say_my_name
+Using "3-say_my_name"
+--------------------
 
-class TestSayMyNameFunction(unittest.TestCase):
-	def test_say_my_name_with_valid_names(self):
-		self.assertEqual(say_my_name("John", "Smith"), "My name is John Smith")
-		self.assertEqual(say_my_name("Walter", "White"), "My name is Walter White")
-		self.assertEqual(say_my_name("Bob"), "My name is Bob")
+Import module:
+	>>> say_my_name = __import__('3-say_my_name').say_my_name
 
-	def test_say_my_name_with_invalid_names(self):
-		with self.assertRaises(TypeError) as context:
-			say_my_name(12, "White")
-		self.assertEqual(str(context.exception), "first_name must be a string or last_name must be a string")
+Test basic:
+	>>> say_my_name("hello", "there")
+	My name is hello there
 
-if __name__ == '__main__':
-	unittest.main()
+Test firstname:
+	>>> say_my_name("hello")
+	My name is hello
+
+Test lastname empty:
+	>>> say_my_name("hello", "")
+	My name is hello
+
+Test bith names empty:
+	>>> say_my_name("", "")
+	My name is
+
+Test just spaces:
+	>>> say_my_name(" ", " ")
+	My name is
+
+Test empty firstname:
+	>>> say_my_name("", "hello")
+	My name is hello
+
+Test no str arg1:
+	>>> say_my_name(33, "hello")
+	Traceback (most recent call last):
+	...
+	TypeError: first_name must be a string
+
+Test no str arg2:
+	>>> say_my_name("hello", 98)
+	Traceback (most recent call last):
+	...
+	TypeError: last_name must be a string
+
+Test no str arg1 arg2:
+	>>> say_my_name(91, 98)
+	Traceback (most recent call last):
+	...
+	TypeError: first_name must be a string
+
+Missing two args:
+	>>> say_my_name()
+	Traceback (most recent call last)
+	...
+	TypeError: say_my_name() missing 1 required positional argument: 'first_name'

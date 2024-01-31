@@ -1,54 +1,132 @@
-import unittest
+The "5-text_indentation" module
+===============================
 
-text_indentation = __import__('5-text_indentation').text_indentation
+Using "text_indentation"
+-----------------------
 
-class TestTextIndentationFunction(unittest.TestCase):
-	def test_text_indentation_with_valid_text(self):
-		
-		import sys
-		from io import StringIO
-		original_stdout = sys.stdout
-		sys.stdout = StringIO()
+Import module:
+	>>> text_indentation = __import__('text_indentation').text_indentation
 
-		text_indentation("""Lorem ipsum dolor sit amet, consectetur adipiscing elit. \
-Quonam modo? Utrum igitur tibi litteram videor an totas paginas commovere? \
-Non autem hoc: igitur ne illud quidem. Fortasse id optimum, sed ubi illud: \
-Plus semper voluptatis? Teneo, inquit, finem illi videri nihil dolere. \
-Transfer idem ad modestiam vel temperantiam, quae est moderatio cupiditatum \
-rationi oboediens. Si id dicis, vicimus. Inde sermone vario sex illa a Dipylo \
-stadia confecimus. Sin aliud quid voles, postea. Quae animi affectio suum \
-cuique tribuens atque hanc, quam dico. Utinam quidem dicerent alium alio \
-beatiorem! Iam ruinas videres""")
+Test no delim:
+	>>> text_indentation("Hello Holberton")
+	Hello Holberton
 
-		expected_output = """Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-Quonam modo?
-Utrum igitur tibi litteram videor an totas paginas commovere?
-Non autem hoc:
-igitur ne illud quidem.
-Fortasse id optimum, sed ubi illud:
-Plus semper voluptatis?
-Teneo, inquit, finem illi videri nihil dolere.
-Transfer idem ad modestiam vel temperantiam, quae est moderatio cupiditatum
-rationi oboediens.
-Si id dicis, vicimus.
-Inde sermone vario sex illa a Dipylo
-stadia confecimus.
-Sin aliud quid voles, postea.
-Quae animi affectio suum
-cuique tribuens atque hanc, quam dico.
-Utinam quidem dicerent alium alio
-beatiorem!
-Iam ruinas videres
-"""
+Test string with spaces:
+	>>> text_indentation("Holberton           ")
+	Holberton
 
-		self.assertEqual(sys.stdout.getvalue(), expected_output)
+Test string with spaces 3:
+	>>> text_indentation("        Holberton     ")
+	Holberton
 
-		sys.stdout = original_stdout
+Test with spaces 2:
+	>>> text_indentation("          Holberton")
+	Holberton
 
-	def test_text_indentation_with_invalid_text(self):
-		with self.assertRaises(TypeError) as context:
-			text_indentation(123)
-		self.assertEqual(str(context.exception), "text must be a string")
+Test string with empty string:
+	>>> text_indentation("")
 
-if __name__ == '__main__':
-	unittest.main()
+Test string with empty string 2:
+	>>> text_indentation("  ")
+
+Test simple:
+	>>> text_indentation("Hello: Holberton")
+	Hello:
+	<BLANKLINE>
+	Holberton
+
+Test delims with spaces:
+	>>> text_indentation("      ?: : ")
+	?
+	<BLANKLINE>
+	:
+	<BLANKLINE>
+	:
+	<BLANKLINE>
+
+Test newline:
+	>>> text_indentation("\n")
+	<BLANKLINE>
+
+Test newline 2:
+	>>> text_indentation("\n\n")
+	<BLANKLINE>
+	<BLANKLINE>
+
+Test newline 3:
+	>>> text_indentation("Hello\n\n")
+	Hello
+	<BLANKLINE>
+
+Test all delimeters:
+	>>> text_indentation("Hello: Holberton? school. fooo")
+	Hello:
+	<BLANKLINE>
+	Holberton?
+	<BLANKLINE>
+	school.
+	<BLANKLINE>
+	fooo
+
+Test all delimeters with spaces:
+	>>> text_indentation("Hello : Holberton ? school . fooo")
+	Hello:
+	<BLANKLINE>
+	Holberton?
+	<BLANKLINE>
+	school.
+	<BLANKLINE>
+	fooo
+
+Test all delimeters with spaces at the end:
+	>>> text_indentation("Hello : Holberton ? school .  fooo")
+	Hello:
+	<BLANKINE>
+	Holberton?
+	<BLANKLINE>
+	school.
+	<BLANKLINE>
+
+Test just delimeters:
+	>>> text_indentation(".?:")
+	.
+	<BLANKLINE>
+	?
+	<BLANKLINE>
+	:
+	<BLANKLINE>
+
+Test delimeters 2:
+	>>> text_indentation("   ?     ")
+	?
+	<BLANKLINE>
+
+Test nonindent inside indent:
+	>>> text_indentation("?Hello.")
+	?
+	<BLANKLINE>
+	Hello.
+	<BLANKLINE>
+
+Test existing newlines:
+	>>> text_indentation("?\n\n.\n\n:")
+	?
+	<BLANKLINE>
+	<BLANKLINE>
+	<BLANKLINE>
+	.
+	<BLANKLINE>
+	:
+	<BLANKLINE>
+
+Test none:
+	>>> text_indentation(None)
+	Traceback (most recent call last):
+	...
+	TypeError: text must be a string
+
+Test number:
+	>>> text_indentation(33)
+	Traceback (most recent call last)
+	...
+	TypeError: text must be a string
