@@ -1,9 +1,8 @@
 #!/usr/bin/pyhton3
 """Defines a function that converts python object to JSON representation."""
-
-
-# Import the json module:
 import json
+
+
 def to_json_string(my_obj):
     """
     A function to return a JSON representation of an object string.
