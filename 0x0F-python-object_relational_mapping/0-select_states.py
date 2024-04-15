@@ -21,8 +21,7 @@ if __name__ == "__main__":
         db=db_name
     )
     """
-    connects to the MySQL server with the provided credentials
-    """
+    connects to the MySQL server with the provided credentials """
 
     cursor = db.cursor()
     """
