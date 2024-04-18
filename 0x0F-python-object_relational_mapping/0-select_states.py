@@ -9,7 +9,7 @@ Lists all states from the database hbtn_0e_0_usa.
 import sys
 import MySQLdb
 
-if __name__ = '__main__':
+if __name__ == '__main__':
     """
     Checks if the file being executed is the main file.
 
