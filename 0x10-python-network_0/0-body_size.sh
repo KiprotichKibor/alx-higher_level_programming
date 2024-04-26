@@ -1,3 +1,4 @@
 #!/bin/bash
 # Bash script that takes in a URL, sends a request to that URL
-curl -s -o /dev/null -w "%{size_download}" "http://0.0.0.0:5000"
+response=$(curl -s "$1" -w "%{size_download}")
+echo "$response"
